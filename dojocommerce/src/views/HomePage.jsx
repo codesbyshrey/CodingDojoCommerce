@@ -20,7 +20,7 @@ const HomePage = () => {
 
     return (
         <Container>
-            <h1>Home Page</h1>
+            <h1>Home Pages</h1>
             <div>
                 <h3 className='nav'> Site Name
                     <Link to="/">shirt</Link>|
