@@ -17,7 +17,12 @@ function App() {
       <p> Shreyas - github - then cart/checkout?</p>
 
       <p> Testing Branch Update 1</p>
-      
+      <p> Shreyas Branch check</p>
+
+      <p> Kimly Branch check</p>
+      <p> Long Branch check</p>
+
+
       <Link to="/test/product"> Product Page Test </Link>
       <Link to="test/cart"> Cart Page Test </Link>
       <Link to="/test/login"> Login Page Test </Link>
