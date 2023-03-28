@@ -3,7 +3,9 @@
 const ProductPage = () => {
 
     return (
-        <h1> This Product: </h1>
+        <div>
+            <h1> This Product: </h1>
+        </div>
     )
 }
 

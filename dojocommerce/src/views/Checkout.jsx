@@ -3,7 +3,14 @@
 const Checkout = () => {
 
     return (
-        <h1> Checkout Your Items </h1>
+        <div>
+            <h1> Checkout Your Items </h1>
+            <p> Pre-populated form of user details </p>
+
+            <p> Shipping Information </p>
+
+            <p> Payment Information </p>
+        </div>
     )
 }
 

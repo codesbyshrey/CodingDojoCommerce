@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import LoginPage from './views/LoginPage'
 import {Routes, Route, Link} from 'react-router-dom'
 import HomePage from './views/HomePage'
@@ -15,15 +17,6 @@ function App() {
       <p> Kimly - home page </p>
       <p> Long - loginreg wrap up</p>
       <p> Shreyas - github - then cart/checkout?</p>
-
-      <p> Testing Branch Update 1</p>
-      <p> Shreyas Branch check</p>
-      <p> Shreyas Branch check</p>
-
-      <p> Kimly Branch check</p>
-      <p> Long Branch check</p>
-
-      <p> Shreyas Branch check</p>
 
       <Link to="/test/product"> Product Page Test </Link>
       <Link to="test/cart"> Cart Page Test </Link>
