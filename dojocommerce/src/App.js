@@ -1,7 +1,8 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import LoginPage from './views/LoginPage'
+import Login from './views/Login'
+import Register from './views/Register'
 import { Routes, Route, Link } from 'react-router-dom'
 import HomePage from './views/HomePage'
 import Checkout from './views/Checkout'
@@ -26,15 +27,17 @@ function App() {
       </div>
 
       <Link to="/test/product/id:"> Product Page Test </Link> ||
+      <Link to="test/checkout"> Checkout Page Test </Link> || LONG ||
+      <Link to="/test/long"> Long Home Page </Link> ||
       <Link to="/test/login"> Login Page Test </Link> ||
-      <Link to="test/checkout"> Checkout Page Test </Link> ||
-      <Link to="/test/long"> Long Home Page </Link>
+      <Link to="/test/register"> Register Page Check</Link>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/test/cart" element={<Cart />} />
         <Route path="/test/checkout" element={<Checkout />} />
-        <Route path="/test/login" element={<LoginPage />} />
+        <Route path="/test/login" element={<Login />} />
+        <Route path="/test/register" element={<Register />} />
         <Route path="/test/product/id:" element={<ProductPage />} />
         <Route path="/test/long" element={<HomePageLong />} />
       </Routes>
