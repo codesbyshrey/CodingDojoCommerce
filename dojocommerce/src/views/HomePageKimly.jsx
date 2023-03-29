@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Container, Grid, Card, CardHeader, CardContent } from '@mui/material'
+import { Container, Grid, Card, CardHeader, CardContent, Typography, CardMedia, CardActions, Button } from '@mui/material'
+import { indigo } from '@mui/material/colors';
 
+const blue = indigo[900]
 
-const HomePage = () => {
+const HomePageKimly = () => {
     const [displayProduct, setDisplayProduct] = useState([])
 
     useEffect(() => {
@@ -20,7 +22,7 @@ const HomePage = () => {
 
     return (
         <Container>
-            <h1>Home Pages</h1>
+            <h1>Home Page</h1>
             <div>
                 <h3 className='nav'> Site Name
                     <Link to="/">shirt</Link>|
@@ -31,61 +33,53 @@ const HomePage = () => {
                 </h3>
             </div>
             <div className='featuredItem'>
-                <h2>display random items/category/inventory</h2>
+                {
+                    displayProduct.map((eachItem, idx) => (
+                        <ol key={idx}>
+                            <li>{eachItem.name}</li>
+                            <li>{eachItem.description}</li>
+                            <li>{eachItem.price}</li>
+                            <li>{eachItem.category}</li>
+                        </ol>
+                    ))
+                }
             </div>
             <div>
                 <h2 className='featuredMessage'>Feature Message</h2>
             </div>
-            <Grid container spacing={2}>
-                {
-                    displayProduct.map((eachProduct, idx) => (
-                        <Grid item md={3}>
-                            <Card elevation={10}>
-                                <CardHeader key={idx}>
-                                    {eachProduct.name}
-                                </CardHeader>
-                                <CardContent>
-                                    {eachProduct.description}
-                                    {eachProduct.price}
-                                </CardContent>
-                            </Card>
-                            <Grid item md={3}></Grid>
-                            <Card elevation={10}>
-                                <CardHeader key={idx}>
-                                    {eachProduct.name}
-                                </CardHeader>
-                                <CardContent>
-                                    {eachProduct.description}
-                                    {eachProduct.price}
-                                </CardContent>
-                            </Card>
-                            <Grid item md={3}></Grid>
-                            <Card elevation={10}>
-                                <CardHeader key={idx}>
-                                    {eachProduct.name}
-                                </CardHeader>
-                                <CardContent>
-                                    {eachProduct.description}
-                                    {eachProduct.price}
-                                </CardContent>
-                            </Card>
-                            <Grid item md={3}></Grid>
-                            <Card elevation={10}>
-                                <CardHeader key={idx}>
-                                    {eachProduct.name}
-                                </CardHeader>
-                                <CardContent>
-                                    {eachProduct.description}
-                                    {eachProduct.price}
-                                </CardContent>
-                            </Card>
-                        </Grid>
-
-                    ))
-                }
-            </Grid>
-        </ Container>
+            <div>
+                <Grid container spacing={4} sx={{ gap: "10px" }}>
+                    {
+                        displayProduct.map((eachProduct, idx) => (
+                            <Grid row>
+                                <Grid item lg={12} >
+                                    <Card sx={{ maxWidth: 345, width: "400px", height: "400px" }}>
+                                        <CardMedia
+                                            sx={{ height: 140 }}
+                                            img src={eachProduct.image} alt={eachProduct.name}
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                                {eachProduct.name}
+                                            </Typography>
+                                            {eachProduct.category}
+                                            <Typography variant="body2" color="text.secondary">
+                                                {eachProduct.description}
+                                            </Typography>
+                                            ${eachProduct.price}
+                                        </CardContent>
+                                        <CardActions>
+                                            <Link to='/test/cart'>add to Cart</Link>
+                                        </CardActions>
+                                    </Card>
+                                </Grid>
+                            </Grid>
+                        ))
+                    }
+                </Grid>
+            </div>
+        </ Container >
     )
 }
 
-export default HomePage
+export default HomePageKimly

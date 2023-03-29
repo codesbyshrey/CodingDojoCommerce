@@ -24,6 +24,7 @@ function App() {
       <Link to="/test/login"> Login Page Test </Link>
       <Link to="test/checkout"> Checkout Page Test </Link>
       <Link to="/test/kimly"> Kimly Home Page </Link>
+      <Link to="/"> Home Page Test </Link>
 
       <Routes>
         <Route path="/" element={<HomePage />} /> 
