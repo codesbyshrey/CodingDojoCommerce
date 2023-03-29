@@ -43,73 +43,64 @@ UserController.deleteUser = (req, res) => {
         .catch(err => res.status(400).json(err));
 };
 
-UserController.login = (req, res) => {
-    const { email, password } = req.body;
+UserController.login = async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        if (user === null) {
+            return res.status(401).json({ error: 'Invalid email or password' });
+        }
 
-    User.findOne({ email })
-        .then(user => {
-            if (!user) {
-                return res.status(401).json({ message: 'Invalid email or password' });
-            }
+        const correctPassword = await bcrypt.compare(req.body.password, user.password);
+        if (!correctPassword) {
+            return res.status(401).json({ error: 'Invalid email or password' });
+        }
 
-            bcrypt.compare(password, user.password)
-                .then(isMatch => {
-                    if (!isMatch) {
-                        return res.status(401).json({ message: 'Invalid email or password' });
-                    }
-
-                    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
-
-                    res.json({ user: user.toJSON(), token });
-                })
-                .catch(err => {
-                    console.error(err);
-                    res.status(500).json({ message: 'Server error' });
-                });
-        })
-        .catch(err => {
-            console.error(err);
-            res.status(500).json({ message: 'Server error' });
-        });
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+        res.cookie('token', token, { httpOnly: true }).json({ message: 'Login successful' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Server error' });
+    }
 };
 
-UserController.register = (req, res) => {
-    const { name, email, password, address } = req.body;
+UserController.register = async (req, res) => {
+    try {
+        const { firstName, lastName, email, password, confirmPassword } = req.body;
+        if (!firstName || !lastName || !email || !password || !confirmPassword) {
+            return res.status(400).json({ error: 'All fields are required' });
+        }
 
-    User.findOne({ email })
-        .then(existingUser => {
-            if (existingUser) {
-                return res.status(400).json({ message: 'User already exists' });
-            }
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ error: 'User already exists' });
+        }
 
-            bcrypt.genSalt(10)
-                .then(salt => {
-                    bcrypt.hash(password, salt)
-                        .then(hashedPassword => {
-                            User.create({ name, email, password: hashedPassword, address })
-                                .then(user => {
-                                    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
-                                    res.json({ user: user.toJSON(), token });
-                                })
-                                .catch(err => {
-                                    console.error(err);
-                                    res.status(500).json({ message: 'Server error' });
-                                });
-                        })
-                        .catch(err => {
-                            console.error(err);
-                            res.status(500).json({ message: 'Server error' });
-                        });
-                })
-                .catch(err => {
-                    console.error(err);
-                    res.status(500).json({ message: 'Server error' });
-                });
-        })
-        .catch(err => {
-            console.error(err);
-            res.status(500).json({ message: 'Server error' });
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = await User.create({
+            firstName,
+            lastName,
+            email,
+            password: hashedPassword,
+            confirmPassword: hashedPassword
         });
+
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+        res.cookie('token', token, { httpOnly: true }).json({ message: 'Registration successful', user: user.toJSON() });
+    } catch (error) {
+        if (error.name === 'ValidationError') {
+            const errors = Object.values(error.errors).map(err => err.message);
+            return res.status(400).json({ error: errors });
+        } else {
+            console.error(error);
+            return res.status(500).json({ error: 'Server error' });
+        }
+    }
 };
+
+UserController.logout = (req, res) => {
+    res.clearCookie('usertoken');
+    res.sendStatus(200);
+};
+
 
 module.exports = UserController;
