@@ -1,9 +1,21 @@
 // Cart Page
 
+const EmptyCart = () => {
+    return (
+        <div> 
+            <h1> Your Cart is Empty </h1>
+        </div>
+    )
+}
+
 const Cart = () => {
 
     return (
+        // if cart exists? then display 
+
         <div className="cartContainer">
+            <EmptyCart/>
+
             <h1> Welcome to Your Cart </h1>
             <h3> Your Cart </h3>
             <div className="cartProducts">
