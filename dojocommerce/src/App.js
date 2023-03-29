@@ -15,9 +15,9 @@ function App() {
   return (
     <div>
       <div className="wireframe">
-      <Link to ="/"> <h1> Welcome to Dojo Commerce </h1> </Link>
-      <hr/>
-      <br/>
+        <Link to="/"> <h1> Welcome to Dojo Commerce </h1> </Link>
+        <hr />
+        <br />
         <h3 className='nav'> eCommerce Clothing
           <Link to="/"> Shirts </Link>|
           <Link to="/"> Pants </Link>|
@@ -27,17 +27,17 @@ function App() {
         </h3>
       </div>
 
-      <Link to="/test/product"> Product Page Test </Link> ||
+      <Link to="/test/product/id:"> Product Page Test </Link> ||
       <Link to="/test/login"> Login Page Test </Link> ||
       <Link to="test/checkout"> Checkout Page Test </Link> ||
-      <Link to="/test/long"> Long Home Page </Link> 
+      <Link to="/test/long"> Long Home Page </Link>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/test/cart" element={<Cart />} />
         <Route path="/test/checkout" element={<Checkout />} />
         <Route path="/test/login" element={<LoginPage />} />
-        <Route path="/test/product" element={<ProductPage />} />
+        <Route path="/test/product/id:" element={<ProductPage />} />
         <Route path="/test/long" element={<HomePageLong />} />
       </Routes>
     </div>
