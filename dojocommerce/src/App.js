@@ -9,6 +9,7 @@ import HomePage from './views/HomePage'
 import Checkout from './views/Checkout'
 import ProductPage from './views/ProductPage'
 import Cart from './views/Cart'
+import HomePageKimly from './views/HomePageKimly'
 
 function App() {
   return (
@@ -22,13 +23,15 @@ function App() {
       <Link to="test/cart"> Cart Page Test </Link>
       <Link to="/test/login"> Login Page Test </Link>
       <Link to="test/checkout"> Checkout Page Test </Link>
+      <Link to="/test/kimly"> Kimly Home Page </Link>
 
       <Routes>
         <Route path="/" element={<HomePage />} /> 
         <Route path="/test/cart" element={<Cart />} />
         <Route path="/test/checkout" element={<Checkout />} />
         <Route path="/test/login" element={<LoginPage />} />
-        <Route path="/test/product" element={<ProductPage />} />
+        <Route path="/test/product" element={<ProductPage />} /> 
+        <Route path="/test/kimly" element={<HomePageKimly/>} />
       </Routes>
     </div>
   );
