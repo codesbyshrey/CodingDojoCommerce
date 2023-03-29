@@ -1,0 +1,74 @@
+[
+    {
+        "_id": "64220c7f3ffa2eaeda56eba7",
+        "name": "shirt",
+        "description": "white sleeveless shirt",
+        "price": 24.99,
+        "image": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fn.nordstrommedia.com%2Fid%2Fsr3%2F9999f2b9-57c6-4c6a-849c-56a39cfa96ee.jpeg%3Fh%3D365%26w%3D240%26dpr%3D2&tbnid=iA7UagHwJw17mM&vet=12ahUKEwjcn8i5iP39AhVtFTQIHXmADKgQMygAegUIARDIAw..i&imgrefurl=https%3A%2F%2Fwww.nordstrom.com%2Fbrowse%2Fmen%2Fclothing%2Fshirts%2Fpolo-shirts%3FfilterByColor%3Dwhite&docid=5-QgVNV66r35dM&w=476&h=730&q=white%20polo%20shirt&ved=2ahUKEwjcn8i5iP39AhVtFTQIHXmADKgQMygAegUIARDIAw",
+        "category": "men apparel",
+        "__v": 0
+    },
+    {
+        "_id": "64236578b97c6f79b226ed0f",
+        "name": "pants",
+        "description": "black pants",
+        "price": 24.99,
+        "image": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fn.nordstrommedia.com%2Fid%2Fsr3%2F9999f2b9-57c6-4c6a-849c-56a39cfa96ee.jpeg%3Fh%3D365%26w%3D240%26dpr%3D2&tbnid=iA7UagHwJw17mM&vet=12ahUKEwjcn8i5iP39AhVtFTQIHXmADKgQMygAegUIARDIAw..i&imgrefurl=https%3A%2F%2Fwww.nordstrom.com%2Fbrowse%2Fmen%2Fclothing%2Fshirts%2Fpolo-shirts%3FfilterByColor%3Dwhite&docid=5-QgVNV66r35dM&w=476&h=730&q=white%20polo%20shirt&ved=2ahUKEwjcn8i5iP39AhVtFTQIHXmADKgQMygAegUIARDIAw",
+        "category": "men apparel",
+        "__v": 0
+    },
+    {
+        "_id": "642380a082da8d3d31e44c21",
+        "name": "men's shirt",
+        "description": "Charles Tyrwhitt dress shirt",
+        "price": 39.95,
+        "image": "https://www.google.com/aclk?sa=l&ai=DChcSEwjg9dTP6v_9AhUcbG8EHd2ADvIYABAHGgJqZg&sig=AOD64_2JcPq6_JxzFNxVsmM2thgFGarsqw&adurl&ctype=5&ved=2ahUKEwjs2cTP6v_9AhUhHjQIHRQbBlgQvhd6BQgBEIoB",
+        "category": "shirt",
+        "__v": 0
+    },
+    {
+        "_id": "6423813382da8d3d31e44c24",
+        "name": "Loro Piana pants",
+        "description": "Leisure city men grey",
+        "price": 965,
+        "image": "https://www.google.com/aclk?sa=l&ai=DChcSEwiv9_Hu6__9AhUQe28EHTLtDLMYABAHGgJqZg&sig=AOD64_0Bgk1537kAIZON_0EoBwFNuPKV8Q&adurl&ctype=5&ved=2ahUKEwiho-Lu6__9AhUoHjQIHeUFApkQvhd6BQgBEIgB",
+        "category": "pants",
+        "__v": 0
+    },
+    {
+        "_id": "6423818782da8d3d31e44c26",
+        "name": "Beige pants",
+        "description": "Ralph Lauren Norton classic fit",
+        "price": 69.99,
+        "image": "https://www.google.com/aclk?sa=l&ai=DChcSEwiv9_Hu6__9AhUQe28EHTLtDLMYABAPGgJqZg&sig=AOD64_1Vx_vXJRfBYgGyWiaW3JmF7-dnQA&adurl&ctype=46&ved=2ahUKEwiho-Lu6__9AhUoHjQIHeUFApkQvhd6BQgBEKAB",
+        "category": "pants",
+        "__v": 0
+    },
+    {
+        "_id": "6423820382da8d3d31e44c28",
+        "name": "Blue stripe anchor",
+        "description": "Fair harbor light",
+        "price": 69.99,
+        "image": "https://www.google.com/aclk?sa=l&ai=DChcSEwjro_jV7P_9AhU6fG8EHbh3CXoYABAFGgJqZg&sig=AOD64_2vNzyZAVdBvuhFDPNut9mcTzd27Q&ctype=5&q=&ved=0ahUKEwjYpfHV7P_9AhXGFzQIHeYRB1MQww8I5A0&adurl=",
+        "category": "short",
+        "__v": 0
+    },
+    {
+        "_id": "6423824b82da8d3d31e44c2a",
+        "name": "Khaki short",
+        "description": "Men's Lakewashed Stretch",
+        "price": 49.95,
+        "image": "https://www.google.com/aclk?sa=l&ai=DChcSEwjro_jV7P_9AhU6fG8EHbh3CXoYABAJGgJqZg&sig=AOD64_0ZtnH3Wu5nqJsdj1OJJXBaqfaccg&ctype=5&q=&ved=0ahUKEwjYpfHV7P_9AhXGFzQIHeYRB1MQww8I6Q0&adurl=",
+        "category": "short",
+        "__v": 0
+    },
+    {
+        "_id": "6423833682da8d3d31e44c2f",
+        "name": "Black shirt",
+        "description": "Men's Essential tee in Black pattern",
+        "price": 25,
+        "image": "https://www.google.com/shopping/product/17907957474655032902?q=shirt&rlz=1C1JZAP_enUS1042US1043&hl=en&biw=1160&bih=572&sxsrf=APwXEdcjpWxB57Ymp2W5-D17DTQPDTk5WA:1680048578657&uact=5&oq=shirt&gs_lcp=Cgtwcm9kdWN0cy1jYxADMgsIABCABBCxAxCDATILCAAQgAQQsQMQgwEyCwgAEIAEELEDEIMBMgsIABCABBCxAxCDATILCAAQgAQQsQMQgwEyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgsIABCABBCxAxCDAToKCAAQigUQsAMQQzoQCAAQigUQsQMQgwEQsAMQQzoOCAAQgAQQsQMQgwEQsAM6CAgAEIAEELADOgcIABCKBRBDOg0IABCKBRCxAxCDARBDOgQIIxAnOgQIABADOgcIABCABBAKOgcIIxDqAhAnOggIABCPARDqAkoECEEYAVDRCFjGJWDiJmgIcAB4AIABXYgBgwaSAQIxMZgBAKABAbABEMgBCsABAQ&sclient=products-cc&prds=eto:7156274481942644585_0,pid:15435078317891182306,rsk:PC_9727422708872928235&sa=X&ved=0ahUKEwjMqdfb7f_9AhUBIX0KHXT3CqcQ8gIIjhYoAA",
+        "category": "shirt",
+        "__v": 0
+    }
+]
