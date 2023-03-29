@@ -15,14 +15,18 @@ code {
   display: flex;
   flex-direction: row;
   flex: 3;
-  justify-content: space-between;
+  justify-content: space-around;
 }
-.featuredItem {
+.contentMain {
   display: flex;
-  justify-content: center;
-  width: 800px;
-  height: 200px;
-  border: 3px solid black;
+  justify-content: space-evenly;
+
+  width: 1000px;
+  height: 600px;
+}
+.separator {
+  padding: 50px;
+  border-bottom: 3px solid lightgrey;
 }
 .featuredMessage {
   display: flex;
@@ -32,4 +36,16 @@ code {
 }
 .footer {
   border-bottom: 3px solid lightgray;
+}
+.extraPadding {
+  padding: 30px;
+}
+.border {
+  border: 3px solid blue;
+  margin-right: -100px;
+}
+.featureProduct {
+  border: 3px solid black;
+  width: 600px;
+  height: 600px;
 }

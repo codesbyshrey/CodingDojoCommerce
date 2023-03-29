@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Container, Grid, Card, CardHeader, CardContent, Typography, CardMedia, CardActions, Button } from '@mui/material'
+import { useParams } from 'react-router-dom'
+import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActions } from '@mui/material'
 
 
 const ProductPage = () => {
-    const [displayProduct, setDisplayProduct] = useState([])
+    const [oneProduct, setOneProduct] = useState([])
+
+    const { id } = useParams()
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/product')
+        axios.get(`http://localhost:8000/api/product`)
             .then(response => {
                 console.log(response.data)
-                setDisplayProduct(response.data)
+                setOneProduct(response.data)
             })
             .catch(err => {
                 console.log(err)
@@ -30,26 +33,53 @@ const ProductPage = () => {
                     <Link to='/test/cart'>cart</Link>
                 </h3>
             </div>
-            <div className='featuredItem'>
-                {
-                    displayProduct.map((eachItem, idx) => (
-                        <ol key={idx}>
-                            <li>{eachItem.name}</li>
-                            <li>{eachItem.description}</li>
-                            <li>{eachItem.price}</li>
-                            <li>{eachItem.category}</li>
-                        </ol>
-                    ))
-                }
+            <div className='separator'>
+                <span></span>
+            </div>
+            {
+                oneProduct.map((eachProduct, idx) => (
+                    <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            img src={eachProduct.image} alt={eachProduct.name}
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {eachProduct.name}
+                            </Typography>
+                            {eachProduct.category}
+                            <Typography variant="body2" color="text.secondary">
+                                {eachProduct.description}
+                            </Typography>
+                            ${eachProduct.price}
+                        </CardContent>
+                        <CardActions>
+
+                        </CardActions>
+                    </Card>
+                ))
+            }
+            <div className='contentMain'>
+                <div>
+                    <h1 className='featureProduct'>feature product</h1>
+
+                </div>
+                <div>
+                    <h3 className='border'>Product detail</h3>
+                </div>
+            </div>
+            <div>
+                <h1 className='extraPadding'>Related items</h1>
             </div>
 
             <div className='footer'>
+
                 <Grid container spacing={4} sx={{ gap: "10px" }}>
                     {
-                        displayProduct.map((eachProduct, idx) => (
+                        oneProduct.map((eachProduct, idx) => (
                             <Grid row>
                                 <Grid item lg={12} >
-                                    <Card sx={{ maxWidth: 345, width: "400px", height: "400px" }}>
+                                    <Card sx={{ maxWidth: 345 }}>
                                         <CardMedia
                                             sx={{ height: 140 }}
                                             img src={eachProduct.image} alt={eachProduct.name}
@@ -65,7 +95,7 @@ const ProductPage = () => {
                                             ${eachProduct.price}
                                         </CardContent>
                                         <CardActions>
-                                            <Link to='/test/cart'>add to Cart</Link>
+
                                         </CardActions>
                                     </Card>
                                 </Grid>
