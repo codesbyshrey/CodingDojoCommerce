@@ -1,47 +1,55 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios.post('https://localhost:8000/api/register', { firstName, lastName, email, password, confirmPassword })
-      .then(response => {
-        console.log(response.data); // handle successful registration
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("https:localhost:8000/api/register", { firstName, lastName, email, password, confirmPassword })
+      .then((res) => {
+        console.log(res.data);
+        navigate("/api/login")
+        // do something after successful registration
       })
-      .catch(error => {
-        console.log(error.response.data); // handle error
+      .catch((err) => {
+        console.log(err.response.data);
+        // handle error messages
       });
-  }
+  };
 
   return (
     <div>
-      <h2>Register</h2>
+      <h1>Registration</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="firstName">First name:</label>
-          <input type="text" id="firstName" value={firstName} onChange={event => setFirstName(event.target.value)} required />
+          <label htmlFor="firstName">First Name:</label>
+          <input type="text" id="firstName" onChange={(e) => setFirstName(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="lastName">Last name:</label>
-          <input type="text" id="lastName" value={lastName} onChange={event => setLastName(event.target.value)} required />
+          <label htmlFor="lastName">Last Name:</label>
+          <input type="text" id="lastName" onChange={(e) => setLastName(e.target.value)} />
         </div>
         <div>
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" value={email} onChange={event => setEmail(event.target.value)} required />
+          <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" value={password} onChange={event => setPassword(event.target.value)} required />
+          <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} />
         </div>
         <div>
           <label htmlFor="confirmPassword">Confirm Password:</label>
-          <input type="password" id="confirmPassword" value={confirmPassword} onChange={event => setConfirmPassword(event.target.value)} required />
+          <input type="password" id="confirmPassword" onChange={(e) => setConfirmPassword(e.target.value)} />
         </div>
         <button type="submit">Register</button>
       </form>
@@ -49,4 +57,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Register

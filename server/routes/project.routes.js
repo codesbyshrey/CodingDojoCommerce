@@ -10,12 +10,15 @@ module.exports = (app) => {
     app.post("/api/user", UserController.createUser)
     app.put("/api/user/:id", UserController.updateUser)
     app.delete("/api/user/:id", UserController.deleteUser)
+    //original material
+    // new login registration backend
     app.post('/api/register', UserController.register);
     app.post('/api/login', UserController.login);
     app.get("/api/users", authenticate, UserController.allUser);  
     app.post('/api/logout', UserController.logout); 
     app.get("/api/userss", UserController.allUser);
 
+    // product controller
     app.get("/api/product/testing", ProductController.apiTestProduct)
     app.get("/api/product", ProductController.allProduct)
     app.get("/api/product/:id", ProductController.oneProduct)
@@ -23,6 +26,7 @@ module.exports = (app) => {
     app.put("/api/product/:id", ProductController.updateProduct)
     app.delete("/api/product/:id", ProductController.deleteProduct)
 
+    // order controller
     app.get("/api/order/testing", OrderController.apiTestOrder)
     app.get("/api/order", OrderController.allOrder)
     app.get("/api/order/:id", OrderController.oneOrder)

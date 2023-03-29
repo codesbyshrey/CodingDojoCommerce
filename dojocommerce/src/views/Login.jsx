@@ -1,32 +1,36 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios.post('https://localhost:8000/api/login', { email, password })
-      .then(response => {
-        console.log(response.data); // handle successful login
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("https:localhost:8000/api/login", { email, password })
+      .then((res) => {
+        console.log(res.data);
+        // do something after successful login
       })
-      .catch(error => {
-        console.log(error.response.data); // handle error
+      .catch((err) => {
+        console.log(err.response.data);
+        // handle error messages
       });
-  }
+  };
 
   return (
     <div>
-      <h2>Login</h2>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" value={email} onChange={event => setEmail(event.target.value)} required />
+          <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" value={password} onChange={event => setPassword(event.target.value)} required />
+          <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} />
         </div>
         <button type="submit">Login</button>
       </form>
@@ -34,4 +38,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
