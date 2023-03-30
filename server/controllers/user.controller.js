@@ -47,16 +47,17 @@ UserController.login = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
         if (user === null) {
-            return res.status(401).json({ error: 'Invalid email or password' });
+            return res.status(401).json({ error: 'Invalid user' });
         }
 
         const correctPassword = await bcrypt.compare(req.body.password, user.password);
+        console.log(req.body.password, user.password, correctPassword)
         if (!correctPassword) {
             return res.status(401).json({ error: 'Invalid email or password' });
         }
 
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
-        res.cookie('token', token, { httpOnly: true }).json({ message: 'Login successful' });
+        res.cookie('usertoken', token, { httpOnly: true }).json({ message: 'Login successful' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Server error' });
@@ -75,13 +76,13 @@ UserController.register = async (req, res) => {
             return res.status(400).json({ error: 'User already exists' });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({
             firstName,
             lastName,
             email,
-            password: hashedPassword,
-            confirmPassword: hashedPassword
+            password,
+            confirmPassword
         });
 
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);

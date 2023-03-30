@@ -15,15 +15,15 @@ const Register = () => {
     e.preventDefault();
 
     axios
-      .post("https:localhost:8000/api/register", { firstName, lastName, email, password, confirmPassword })
+      .post("http://localhost:8000/api/register", { firstName, lastName, email, password, confirmPassword })
       .then((res) => {
         console.log(res.data);
-        navigate("/api/login")
         // do something after successful registration
+        navigate("/test/login")
       })
       .catch((err) => {
         console.log(err.response.data);
-        // handle error messages
+        navigate("/")
       });
   };
 
@@ -57,4 +57,4 @@ const Register = () => {
   );
 };
 
-export default Register
+export default Register;

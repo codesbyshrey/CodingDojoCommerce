@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post("https:localhost:8000/api/login", { email, password })
+      .post("http://localhost:8000/api/login", { email, password })
       .then((res) => {
         console.log(res.data);
+        navigate("/")
         // do something after successful login
       })
       .catch((err) => {
@@ -38,4 +41,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

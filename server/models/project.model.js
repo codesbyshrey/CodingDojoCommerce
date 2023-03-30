@@ -31,7 +31,8 @@ userSchema.virtual('confirmPassword')
 
 
 userSchema.pre('validate', function (next) {
-    if (this.password !== this.confirmPassword) {
+    console.log(this.get('confirmPassword'))
+    if (this.password !== this.get('confirmPassword')) {
         this.invalidate('confirmPassword', 'Password must match confirm password');
     }
     next();
