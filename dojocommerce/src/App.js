@@ -26,7 +26,7 @@ function App() {
         </h3>
       </div>
 
-      <Link to="/test/product/id:"> Product Page Test </Link> ||
+
       <Link to="test/checkout"> Checkout Page Test </Link> || LONG ||
       <Link to="/test/long"> Long Home Page </Link> ||
       <Link to="/test/login"> Login Page Test </Link> ||
@@ -38,7 +38,7 @@ function App() {
         <Route path="/test/checkout" element={<Checkout />} />
         <Route path="/test/login" element={<Login />} />
         <Route path="/test/register" element={<Register />} />
-        <Route path="/test/product/id:" element={<ProductPage />} />
+        <Route path="/test/product/:id" element={<ProductPage />} />
         <Route path="/test/long" element={<HomePageLong />} />
       </Routes>
     </div>

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Container, Grid, Card, CardHeader, CardContent, Typography, CardMedia, CardActions, Button } from '@mui/material'
-import { indigo } from '@mui/material/colors';
+import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActions } from '@mui/material'
 
-const blue = indigo[900]
 
 const HomePage = () => {
     const [displayProduct, setDisplayProduct] = useState([])
+    const [randomProduct, setRandomProduct] = useState([])
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/product')
             .then(response => {
-                console.log(response.data)
                 setDisplayProduct(response.data)
+                const products = response.data
+                const randomIndex = Math.floor(Math.random() * products.length)
+                setRandomProduct(products[randomIndex])
             })
             .catch(err => {
                 console.log(err)
@@ -22,19 +23,16 @@ const HomePage = () => {
 
     return (
         <Container>
-            <h1>HomePage</h1>
-
+            <h1>Featured product</h1>
             <div className='featuredItem'>
-                {
-                    displayProduct.map((eachItem, idx) => (
-                        <ol key={idx}>
-                            <li>{eachItem.name}</li>
-                            <li>{eachItem.description}</li>
-                            <li>{eachItem.price}</li>
-                            <li>{eachItem.category}</li>
-                        </ol>
-                    ))
-                }
+                <img src={randomProduct.image} height="500px" width="500px" alt={randomProduct.name} />
+                <ul>
+                    <h3>{randomProduct.name}</h3>
+                    <li>{randomProduct.description}</li>
+                    <li>${randomProduct.price}</li>
+                    <li>{randomProduct.category}</li>
+                    <Link to='/test/cart'>add to Cart</Link>
+                </ul>
             </div>
             <div>
                 <h2 className='featuredMessage'>Feature Message</h2>
@@ -43,29 +41,33 @@ const HomePage = () => {
                 <Grid container spacing={4} sx={{ gap: "10px" }}>
                     {
                         displayProduct.map((eachProduct, idx) => (
-                            <Grid row>
-                                <Grid item lg={12} >
-                                    <Card sx={{ maxWidth: 345, width: "400px", height: "400px" }}>
-                                        <CardMedia
-                                            sx={{ height: 140 }}
-                                            img src={eachProduct.image} alt={eachProduct.name}
-                                        />
-                                        <CardContent>
-                                            <Typography gutterBottom variant="h5" component="div">
-                                                {eachProduct.name}
-                                            </Typography>
-                                            {eachProduct.category}
-                                            <Typography variant="body2" color="text.secondary">
-                                                {eachProduct.description}
-                                            </Typography>
-                                            ${eachProduct.price}
-                                        </CardContent>
-                                        <CardActions>
-                                            <Link to='/test/cart'>add to Cart</Link>
-                                        </CardActions>
-                                    </Card>
+                            <div key={idx}>
+                                <Grid>
+                                    <Grid item lg={12} >
+                                        <Card sx={{ maxWidth: 345 }}>
+                                            <CardMedia
+                                                component="img"
+                                                height="345px"
+                                                img src={eachProduct.image}
+                                                alt={eachProduct.name}
+                                            />
+                                            <CardContent>
+                                                <Typography gutterBottom variant="h5" component="div">
+                                                    <Link to={`/test/product/${eachProduct._id}`}>{eachProduct.name}</Link>
+                                                </Typography>
+                                                {eachProduct.category}
+                                                <Typography variant="body2" color="text.secondary">
+                                                    {eachProduct.description}
+                                                </Typography>
+                                                ${eachProduct.price}
+                                            </CardContent>
+                                            <CardActions>
+                                                <Link to='/test/cart'>add to Cart</Link>
+                                            </CardActions>
+                                        </Card>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
+                            </div>
                         ))
                     }
                 </Grid>

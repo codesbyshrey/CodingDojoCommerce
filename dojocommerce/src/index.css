@@ -33,6 +33,7 @@ code {
   justify-content: center;
   width: 800px;
   height: 80px;
+  border-top: 5px solid grey;
 }
 .footer {
   border-bottom: 3px solid lightgray;
@@ -48,4 +49,8 @@ code {
   border: 3px solid black;
   width: 600px;
   height: 600px;
+}
+.featuredItem {
+  display: flex;
+  flex-direction: row;
 }

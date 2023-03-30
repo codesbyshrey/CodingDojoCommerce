@@ -7,97 +7,65 @@ import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActions 
 
 const ProductPage = () => {
     const [oneProduct, setOneProduct] = useState([])
-
+    const [oneCategory, setOneCategory] = useState([])
+    const [category, setCategory] = useState([])
+    const [similarCategory, setSimilarCategory] = useState([])
+    const list = []
     const { id } = useParams()
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/product${id}`)
+        axios.get(`http://localhost:8000/api/product/${id}`)
             .then(response => {
                 setOneProduct(response.data)
+
             })
             .catch(err => {
                 console.log(err)
             })
+
+
     }, [id])
 
-    return (
-        <Container>
-            <h1>Product Page</h1>
-            <div>
-
-            </div>
-            <div className='separator'>
-                <span></span>
-            </div>
-            {
-                oneProduct.map((eachProduct, idx) => (
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                            sx={{ height: 140 }}
-                            img src={eachProduct.image} alt={eachProduct.name}
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                {eachProduct.name}
-                            </Typography>
-                            {eachProduct.category}
-                            <Typography variant="body2" color="text.secondary">
-                                {eachProduct.description}
-                            </Typography>
-                            ${eachProduct.price}
-                        </CardContent>
-                        <CardActions>
-
-                        </CardActions>
-                    </Card>
-                ))
-            }
-            <div className='contentMain'>
-                <div>
-                    <h1 className='featureProduct'>feature product</h1>
-
-                </div>
-                <div>
-                    <h3 className='border'>Product detail</h3>
-                </div>
-            </div>
-            <div>
-                <h1 className='extraPadding'>Related items</h1>
-            </div>
-
-            <div className='footer'>
-
-                <Grid container spacing={4} sx={{ gap: "10px" }}>
-                    {
-                        oneProduct.map((eachProduct, idx) => (
-                            <Grid row>
-                                <Grid item lg={12} >
-                                    <Card sx={{ maxWidth: 345 }}>
-                                        <CardMedia
-                                            sx={{ height: 140 }}
-                                            img src={eachProduct.image} alt={eachProduct.name}
-                                        />
-                                        <CardContent>
-                                            <Typography gutterBottom variant="h5" component="div">
-                                                {eachProduct.name}
-                                            </Typography>
-                                            {eachProduct.category}
-                                            <Typography variant="body2" color="text.secondary">
-                                                {eachProduct.description}
-                                            </Typography>
-                                            ${eachProduct.price}
-                                        </CardContent>
-                                        <CardActions>
-
-                                        </CardActions>
-                                    </Card>
-                                </Grid>
-                            </Grid>
-                        ))
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/product`)
+            .then(response => {
+                //setOneCategory(response.data)
+                const allProduct = response.data
+                allProduct.forEach((item, idx) => {
+                    if (item.category === "shirt") {
+                        list.push(item)
                     }
-                </Grid>
+                })
+                setSimilarCategory(list)
+                console.log(similarCategory)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
+    return (
+        <div className='separator'>
+            <div className='featuredItem'>
+                <img src={oneProduct.image} height="600px" width="500px" alt={oneProduct.name} />
+                <ul>
+                    <h3>{oneProduct.name}</h3>
+                    <li>{oneProduct.description}</li>
+                    <li>${oneProduct.price}</li>
+                    <li>{oneProduct.category}</li>
+                    <Link to='/test/cart'>add to Cart</Link>
+                </ul>
             </div>
-        </ Container >
+            <h3 className='extraPadding'>Related items</h3>
+            {
+                list.map((eachCategory, idx) => (
+                    <div key={idx}>
+                        <h3>{eachCategory.name}</h3>
+                        <li>{eachCategory.description}</li>
+                        <li>${eachCategory.price}</li>
+                    </div>
+                ))}
+        </div>
     )
 }
 
