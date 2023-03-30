@@ -1,6 +1,6 @@
 # CodingDojoCommerce
  eCommerce Website for MERN Project Week
- - [Kimly Quac](https://github.com/kquac00_
+ - [Kimly Quac](https://github.com/kquac00)
  - [Em Bang Long Nguyen](https://github.com/longnguyen2912)
  - Shreyas Sriram
 
