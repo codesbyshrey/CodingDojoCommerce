@@ -3,46 +3,45 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActions } from '@mui/material'
+import DisplayPants from './DisplayPants'
 
 
 const ProductPage = () => {
     const [oneProduct, setOneProduct] = useState([])
     const [oneCategory, setOneCategory] = useState([])
     const [category, setCategory] = useState([])
-    const [similarCategory, setSimilarCategory] = useState([])
-    const list = []
+    const [itemPants, setItemPants] = useState([])
+    const [itemShort, setItemShort] = useState([])
+    const [itemShirt, setItemShirt] = useState([])
+
     const { id } = useParams()
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/product/${id}`)
             .then(response => {
                 setOneProduct(response.data)
-
             })
             .catch(err => {
                 console.log(err)
             })
-
 
     }, [id])
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/product`)
             .then(response => {
-                //setOneCategory(response.data)
                 const allProduct = response.data
-                allProduct.forEach((item, idx) => {
-                    if (item.category === "shirt") {
-                        list.push(item)
-                    }
-                })
-                setSimilarCategory(list)
-                console.log(similarCategory)
+                const categoryPants = allProduct.filter(item => item.category === "pants")
+                setItemPants(categoryPants)
+                const categoryShirt = allProduct.filter(item => item.category === "shirt")
+                setItemShirt(categoryShirt)
+                const categoryShort = allProduct.filter(item => item.category === "short")
+                setItemShort(categoryShort)
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+    }, [category])
 
     return (
         <div className='separator'>
@@ -58,14 +57,13 @@ const ProductPage = () => {
             </div>
             <h3 className='extraPadding'>Related items</h3>
             {
-                list.map((eachCategory, idx) => (
-                    <div key={idx}>
-                        <h3>{eachCategory.name}</h3>
-                        <li>{eachCategory.description}</li>
-                        <li>${eachCategory.price}</li>
-                    </div>
-                ))}
-        </div>
+                itemShirt ?
+                    <div>
+                        <DisplayPants />
+                    </div> : <p></p>
+
+            }
+        </div >
     )
 }
 
