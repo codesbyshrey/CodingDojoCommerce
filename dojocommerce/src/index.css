@@ -53,4 +53,5 @@ code {
 .featuredItem {
   display: flex;
   flex-direction: row;
+  border: 1px dotted limegreen;
 }

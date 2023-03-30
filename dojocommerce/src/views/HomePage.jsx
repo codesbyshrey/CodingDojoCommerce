@@ -23,7 +23,7 @@ const HomePage = () => {
 
     return (
         <Container>
-            <h1>Featured product</h1>
+            <h1>Featured Product</h1>
             <div className='featuredItem'>
                 <img src={randomProduct.image} height="500px" width="500px" alt={randomProduct.name} />
                 <ul>
@@ -31,11 +31,11 @@ const HomePage = () => {
                     <li>{randomProduct.description}</li>
                     <li>${randomProduct.price}</li>
                     <li>{randomProduct.category}</li>
-                    <Link to='/test/cart'>add to Cart</Link>
+                    <Link to='/test/cart'> Add Product to Cart </Link>
                 </ul>
             </div>
             <div>
-                <h2 className='featuredMessage'>Feature Message</h2>
+                <h2 className='featuredMessage'> Products Available: </h2>
             </div>
             <div>
                 <Grid container spacing={4} sx={{ gap: "10px" }}>
@@ -62,7 +62,7 @@ const HomePage = () => {
                                                 ${eachProduct.price}
                                             </CardContent>
                                             <CardActions>
-                                                <Link to='/test/cart'>add to Cart</Link>
+                                                <Link to='/test/cart'> Add Product to Cart </Link>
                                             </CardActions>
                                         </Card>
                                     </Grid>

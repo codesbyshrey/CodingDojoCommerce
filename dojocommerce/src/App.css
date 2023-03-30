@@ -1,9 +1,25 @@
 * {
-  margin: 0;
-  padding: 0;
+  margin: 1px;
+  padding: 1px;
 }
 
 .wireframe {
-  border: 2px dotted black;
+  background-color: lightcoral;
+  border: 2px solid black;
   display: flex;
+  flex: wrap;
+  justify-content: space-evenly;
+}
+
+.wireframelink {
+  display: flex;
+  flex: wrap;
+  text-align: right;
+}
+
+.testpages {
+  margin: 2px;
+  padding: 2px;
+  text-align:center;
+  justify-content: space-evenly;
 }

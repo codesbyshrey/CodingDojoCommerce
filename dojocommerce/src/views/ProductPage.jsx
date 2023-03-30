@@ -53,10 +53,10 @@ const ProductPage = () => {
                     <li>{oneProduct.description}</li>
                     <li>${oneProduct.price}</li>
                     <li>{oneProduct.category}</li>
-                    <Link to='/test/cart'>add to Cart</Link>
+                    <Link to='/test/cart'>Add to Cart </Link>
                 </ul>
             </div>
-            <h3 className='extraPadding'>Related items</h3>
+            <h3 className='extraPadding'> Related Items: </h3>
             {
                 itemShirt ?
                     <div>
