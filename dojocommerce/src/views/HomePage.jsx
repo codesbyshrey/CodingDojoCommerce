@@ -22,8 +22,8 @@ const HomePage = () => {
 
     return (
         <Container>
-            <h1>Home Page</h1>
-            
+            <h1>HomePage</h1>
+
             <div className='featuredItem'>
                 {
                     displayProduct.map((eachItem, idx) => (

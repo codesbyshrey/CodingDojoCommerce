@@ -11,27 +11,20 @@ const ProductPage = () => {
     const { id } = useParams()
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/product`)
+        axios.get(`http://localhost:8000/api/product${id}`)
             .then(response => {
-                console.log(response.data)
                 setOneProduct(response.data)
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+    }, [id])
 
     return (
         <Container>
             <h1>Product Page</h1>
             <div>
-                <h3 className='nav'> Site Name
-                    <Link to="/">shirt</Link>|
-                    <Link to="/">pant</Link>|
-                    <Link to="/">short</Link>
-                    Search option
-                    <Link to='/test/cart'>cart</Link>
-                </h3>
+
             </div>
             <div className='separator'>
                 <span></span>
