@@ -7,9 +7,10 @@ import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActions 
 
 const ProductPage = () => {
     const [oneProduct, setOneProduct] = useState([])
+
     const [oneCategory, setOneCategory] = useState([])
-    const [category, setCategory] = useState([])
-    const [similarCategory, setSimilarCategory] = useState([])
+    // const [category, setCategory] = useState([])
+    // const [similarCategory, setSimilarCategory] = useState([])
     const list = []
     const { id } = useParams()
 
@@ -17,7 +18,7 @@ const ProductPage = () => {
         axios.get(`http://localhost:8000/api/product/${id}`)
             .then(response => {
                 setOneProduct(response.data)
-
+                console.log(response.data.category)
             })
             .catch(err => {
                 console.log(err)
@@ -36,8 +37,8 @@ const ProductPage = () => {
                         list.push(item)
                     }
                 })
-                setSimilarCategory(list)
-                console.log(similarCategory)
+                setOneCategory(list)
+                // console.log(setOneCategory)
             })
             .catch(err => {
                 console.log(err)
@@ -58,7 +59,7 @@ const ProductPage = () => {
             </div>
             <h3 className='extraPadding'>Related items</h3>
             {
-                list.map((eachCategory, idx) => (
+                oneCategory.map((eachCategory, idx) => (
                     <div key={idx}>
                         <h3>{eachCategory.name}</h3>
                         <li>{eachCategory.description}</li>
