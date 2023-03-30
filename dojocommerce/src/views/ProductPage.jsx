@@ -4,6 +4,8 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActions } from '@mui/material'
 import DisplayPants from './DisplayPants'
+import DisplayShirt from './DisplayShirt'
+import DisplayShort from './DisplayShort'
 
 
 const ProductPage = () => {
@@ -11,9 +13,7 @@ const ProductPage = () => {
 
     const [oneCategory, setOneCategory] = useState([])
     const [category, setCategory] = useState([])
-    const [itemPants, setItemPants] = useState([])
-    const [itemShort, setItemShort] = useState([])
-    const [itemShirt, setItemShirt] = useState([])
+
 
     const { id } = useParams()
 
@@ -27,22 +27,6 @@ const ProductPage = () => {
             })
 
     }, [id])
-
-    useEffect(() => {
-        axios.get(`http://localhost:8000/api/product`)
-            .then(response => {
-                const allProduct = response.data
-                const categoryPants = allProduct.filter(item => item.category === "pants")
-                setItemPants(categoryPants)
-                const categoryShirt = allProduct.filter(item => item.category === "shirt")
-                setItemShirt(categoryShirt)
-                const categoryShort = allProduct.filter(item => item.category === "short")
-                setItemShort(categoryShort)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }, [category])
 
     return (
         <div className='separator'>
@@ -58,10 +42,22 @@ const ProductPage = () => {
             </div>
             <h3 className='extraPadding'> Related Items: </h3>
             {
-                itemShirt ?
-                    <div>
-                        <DisplayPants />
-                    </div> : <p></p>
+                oneProduct && oneProduct.category === "shirt" &&
+                <div>
+                    <DisplayShirt />
+                </div>
+            }
+            {
+                oneProduct && oneProduct.category === "short" &&
+                <div>
+                    <DisplayShort />
+                </div>
+            }
+            {
+                oneProduct && oneProduct.category === "pants" &&
+                <div>
+                    <DisplayPants />
+                </div>
             }
         </div >
     )

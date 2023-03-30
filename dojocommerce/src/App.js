@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import ShoppingCart from './views/ShoppingCart';
 import Login from './views/Login'
 import Register from './views/Register'
 import { Routes, Route, Link } from 'react-router-dom'
@@ -45,6 +45,7 @@ function App() {
         <Route path="/test/pants" element={<DisplayPants />} />
         <Route path="/test/shirt" element={<DisplayShirt />} />
         <Route path="/test/short" element={<DisplayShort />} />
+        <Route path="/test/shoppingcart" element={<ShoppingCart />} />
       </Routes>
     </div>
   );
