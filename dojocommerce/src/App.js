@@ -9,6 +9,9 @@ import Checkout from './views/Checkout'
 import ProductPage from './views/ProductPage'
 import Cart from './views/Cart'
 import HomePageLong from './views/HomePageLong';
+import DisplayPants from './views/DisplayPants';
+import DisplayShirt from './views/DisplayShirt';
+import DisplayShort from './views/DisplayShort';
 
 function App() {
   return (
@@ -18,9 +21,9 @@ function App() {
         <hr />
         <br />
         <h3 className='nav'> eCommerce Clothing
-          <Link to="/"> Shirts </Link>|
-          <Link to="/"> Pants </Link>|
-          <Link to="/">Shorts </Link>|
+          <Link to="/test/shirt"> Shirts </Link>|
+          <Link to="/test/pants"> Pants </Link>|
+          <Link to="/test/short">Shorts </Link>|
           Search Option
           <Link to='/test/cart'> Cart </Link>
         </h3>
@@ -40,6 +43,9 @@ function App() {
         <Route path="/test/register" element={<Register />} />
         <Route path="/test/product/:id" element={<ProductPage />} />
         <Route path="/test/long" element={<HomePageLong />} />
+        <Route path="/test/pants" element={<DisplayPants />} />
+        <Route path="/test/shirt" element={<DisplayShirt />} />
+        <Route path="/test/short" element={<DisplayShort />} />
       </Routes>
     </div>
   );
