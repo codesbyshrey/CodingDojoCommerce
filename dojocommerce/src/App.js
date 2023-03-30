@@ -30,7 +30,7 @@ function App() {
       </div>
 
       <div className="testpages">
-        <Link to="test/checkout"> Checkout Page Test </Link> 
+        <Link to="test/checkout"> Checkout Page Test </Link> ||
         <Link to="/test/login"> Login Page Test </Link> ||
         <Link to="/test/register"> Register Page Check</Link>
       </div>

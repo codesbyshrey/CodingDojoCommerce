@@ -22,6 +22,7 @@ module.exports = (app) => {
     app.get("/api/product/testing", ProductController.apiTestProduct)
     app.get("/api/product", ProductController.allProduct)
     app.get("/api/product/:id", ProductController.oneProduct)
+    app.get("/api/cart/:id", ProductController.oneProduct)
     app.post("/api/product", ProductController.createProduct)
     app.put("/api/product/:id", ProductController.updateProduct)
     app.delete("/api/product/:id", ProductController.deleteProduct)

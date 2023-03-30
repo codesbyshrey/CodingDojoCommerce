@@ -62,7 +62,7 @@ const HomePage = () => {
                                                 ${eachProduct.price}
                                             </CardContent>
                                             <CardActions>
-                                                <Link to='/test/cart'> Add Product to Cart </Link>
+                                                <Link to={`/test/cart/${eachProduct._id}`}> Add Product to Cart </Link>
                                             </CardActions>
                                         </Card>
                                     </Grid>

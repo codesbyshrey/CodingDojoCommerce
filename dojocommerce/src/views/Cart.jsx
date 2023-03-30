@@ -1,6 +1,7 @@
 // Cart Page
-import React from "react"
-import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
+import React, { useEffect, useState } from "react"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
 const EmptyCart = () => {
     return (
@@ -12,8 +13,21 @@ const EmptyCart = () => {
 }
 
 const Cart = () => {
+    const [cartProducts, setCartProducts] = useState([])
 
     const navigate = useNavigate();
+    const { id } = useParams()
+
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/product/${id}`)
+            .then(response => {
+                setCartProducts(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+    }, [id])
 
     const updateCart = () => {
         console.log("Update Cart")
@@ -27,7 +41,6 @@ const Cart = () => {
         navigate('/test/register') //navigate back to home page for now
     }
 
-
     return (
         // if cart exists? then display 
 
@@ -38,6 +51,12 @@ const Cart = () => {
             <h3> Your Cart </h3>
             <div className="cartProducts">
                 <h4> Your Items </h4>
+                <div className='featuredItem'>
+                <ul>
+                    <li>{cartProducts.name}</li>
+                    <li>${cartProducts.price}</li>
+                </ul>
+            </div>
             </div>
             <div className="orderSummary"> 
                 <h4> Summary (x items) </h4>
