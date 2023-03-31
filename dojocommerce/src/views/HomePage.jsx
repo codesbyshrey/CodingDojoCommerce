@@ -80,7 +80,7 @@ const HomePage = () => {
                                             <CardMedia
                                                 component="img"
                                                 height="345px"
-                                                img src={eachProduct.image}
+                                                img="true" src={eachProduct.image}
                                                 alt={eachProduct.name}
                                             />
                                             <CardContent>

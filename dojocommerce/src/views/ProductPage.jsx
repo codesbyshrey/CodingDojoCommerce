@@ -16,6 +16,7 @@ const ProductPage = () => {
         axios.get(`http://localhost:8000/api/product/${id}`)
             .then(response => {
                 setOneProduct(response.data)
+                window.scrollTo(0,0)
             })
             .catch(err => {
                 console.log(err)

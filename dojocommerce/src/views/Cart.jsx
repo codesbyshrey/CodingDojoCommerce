@@ -19,8 +19,9 @@ const Cart = () => {
     const { id } = useParams()
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/product/${id}`)
+        axios.get(`http://localhost:8000/api/order`)
             .then(response => {
+                console.log(response.data)
                 setCartProducts(response.data)
             })
             .catch(err => {
@@ -63,6 +64,23 @@ const Cart = () => {
             </div>
             <button href="/test/checkout" className="btn btn-primary" type="submit"> <Link to="/test/checkout"> Checkout </Link> </button>
             <button className="btn btn-secondary" type="submit" onClick={checkoutHandler}> Checkout(Register) </button>
+            <br/>
+            <hr/>
+            <br/>
+            <h2> Current Orders: </h2>
+            <div>
+                {
+                    cartProducts.map((eachOrder, index) => (
+                        <div key={index}>
+                            <p> {eachOrder.user}</p>
+                            <p> {eachOrder.products} </p>
+                            <p> {eachOrder.total} </p>
+                            <p> {eachOrder.status} </p>
+                            <hr/>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     )
 }
