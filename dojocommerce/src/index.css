@@ -60,7 +60,7 @@ code {
   background-color: lightblue;
   width: 300px;
   align-items: right;
-  margin-left: 10px;
+  margin-left: 100px;
 }
 
 footer a {
@@ -68,7 +68,6 @@ footer a {
   justify-content: space-evenly;
   text-decoration: none;
   font-style: bold;
-
 }
 
 .wireframe Link {

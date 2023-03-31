@@ -14,7 +14,7 @@ const HomePage = () => {
     const addToCart = (product) => {
         setCart([...cart, product])
         console.log(cart)
-        window.scrollTo(0,30)
+        window.scrollTo(0, 30)
     }
 
     const navigate = useNavigate();
@@ -57,31 +57,31 @@ const HomePage = () => {
                                     {eachProduct.name}: ${eachProduct.price}
                                 </ol>
                             </div>
-                            
+
                         ))
                     }
                     <h4>Total Amount: {cart.price}</h4>
                     <button className="btn btn-secondary" type="submit" onClick={checkoutHandler}> Checkout </button>
                 </div>
             </div>
-            <br/>
-            <hr/>
-            <br/>
+            <br />
+            <hr />
+            <br />
             <div>
                 <h2 className='featuredMessage'> Products Available: </h2>
             </div>
             <div>
-                <Grid container spacing={4} sx={{ gap: "10px" }}>
+                <Grid container spacing={3} sx={{ gap: "10px" }}>
                     {
                         displayProduct.map((eachProduct, idx) => (
                             <div key={idx}>
                                 <Grid>
                                     <Grid item lg={12} >
-                                        <Card sx={{ maxWidth: 345 }}>
+                                        <Card sx={{ maxWidth: 200, maxHeight: 500 }}>
                                             <CardMedia
                                                 component="img"
-                                                height="345px"
-                                                img="true" src={eachProduct.image}
+                                                height="250px"
+                                                img src={eachProduct.image}
                                                 alt={eachProduct.name}
                                             />
                                             <CardContent>
@@ -105,9 +105,9 @@ const HomePage = () => {
                         ))
                     }
                 </Grid>
-                <hr/>
-                <br/>
-                <hr/>
+                <hr />
+                <br />
+                <hr />
                 <CartPage cart={cart} />
             </div>
         </ Container >
