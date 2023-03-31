@@ -48,22 +48,21 @@ const Cart = () => {
         <div className="cartContainer">
             <EmptyCart/>
 
-            <h1> Refresh Cart <button className="btn" type="button" onClick={updateCart}> Update </button>  </h1>
+            <h1> <button className="btn" type="button" onClick={updateCart}> Update </button>  </h1>
             <div className="cartProducts">
                 <h4> Your Items </h4>
                 <div className='featuredItem'>
-                <ul>
-                    <li>{cartProducts.name}</li>
-                    <li>${cartProducts.price}</li>
-                </ul>
-            </div>
+                    <ul>
+                        <li>{cartProducts.name}</li>
+                        <li>${cartProducts.price}</li>
+                    </ul>
+                </div>
             </div>
             <div className="orderSummary"> 
-                <h4> Summary (x items) </h4>
                 <button className="btn btn-danger" type="button" onClick={removeItem}> Remove This Item </button>
-            </div>
             <button href="/test/checkout" className="btn btn-primary" type="submit"> <Link to="/test/checkout"> Checkout </Link> </button>
             <button className="btn btn-secondary" type="submit" onClick={checkoutHandler}> Checkout(Register) </button>
+            </div>
             <br/>
             <hr/>
             <br/>

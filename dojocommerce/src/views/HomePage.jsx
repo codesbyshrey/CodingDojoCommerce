@@ -41,7 +41,7 @@ const HomePage = () => {
             <div className='featuredItem'>
                 <img src={randomProduct.image} height="500px" width="500px" alt={randomProduct.name} />
                 <ul>
-                    <h3>{randomProduct.name}</h3>
+                    <h3><Link to={`/test/product/${randomProduct._id}`}>{randomProduct.name}</Link></h3>
                     <li>{randomProduct.description}</li>
                     <li>${randomProduct.price}</li>
                     <li>{randomProduct.category}</li>
