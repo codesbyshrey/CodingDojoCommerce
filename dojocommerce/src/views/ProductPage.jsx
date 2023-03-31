@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActions } from '@mui/material'
 import DisplayPants from './DisplayPants'
 import DisplayShirt from './DisplayShirt'
 import DisplayShort from './DisplayShort'
@@ -10,10 +9,6 @@ import DisplayShort from './DisplayShort'
 
 const ProductPage = () => {
     const [oneProduct, setOneProduct] = useState([])
-
-    const [oneCategory, setOneCategory] = useState([])
-    const [category, setCategory] = useState([])
-
 
     const { id } = useParams()
 

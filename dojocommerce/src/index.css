@@ -53,5 +53,9 @@ code {
 .featuredItem {
   display: flex;
   flex-direction: row;
-  border: 1px dotted limegreen;
+}
+.cart {
+  border: 3px solid lightgreen;
+  background-color: lightblue;
+  width: 300px;
 }

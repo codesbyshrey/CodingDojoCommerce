@@ -2,11 +2,20 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActions } from '@mui/material'
+import CartPage from './CartPage'
 
 
 const HomePage = () => {
     const [displayProduct, setDisplayProduct] = useState([])
     const [randomProduct, setRandomProduct] = useState([])
+    const [cart, setCart] = useState([])
+
+    const addToCart = (product) => {
+        setCart([...cart, product])
+        console.log(cart)
+
+
+    }
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/product')
@@ -33,6 +42,19 @@ const HomePage = () => {
                     <li>{randomProduct.category}</li>
                     <Link to='/test/cart'> Add Product to Cart </Link>
                 </ul>
+                <div className='cart'>
+                    <h3>Cart content:</h3>
+                    {
+                        cart.map((eachProduct, idx) => (
+                            <div key={idx}>
+                                <ol >
+                                    {eachProduct.name}: ${eachProduct.price}
+                                </ol>
+                            </div>
+                        ))
+                    }
+                    <h4>Total amount: {cart.price}</h4>
+                </div>
             </div>
             <div>
                 <h2 className='featuredMessage'> Products Available: </h2>
@@ -62,7 +84,8 @@ const HomePage = () => {
                                                 ${eachProduct.price}
                                             </CardContent>
                                             <CardActions>
-                                                <Link to={`/test/cart/${eachProduct._id}`}> Add Product to Cart </Link>
+                                                <Link to={`/test/cart`}>Go to cart</Link>
+                                                <button onClick={() => addToCart(eachProduct)}>Add Product to Cart</button>
                                             </CardActions>
                                         </Card>
                                     </Grid>
@@ -71,6 +94,7 @@ const HomePage = () => {
                         ))
                     }
                 </Grid>
+                <CartPage cart={cart} />
             </div>
         </ Container >
     )
