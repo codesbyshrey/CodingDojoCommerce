@@ -49,7 +49,7 @@ const DisplayShirt = () => {
                                                     ${eachCategory.price}
                                                 </CardContent>
                                                 <CardActions>
-                                                    <Link to='/test/cart'>add to Cart</Link>
+                                                    <Link to='/test/cart'>Add to Cart</Link>
                                                 </CardActions>
                                             </Card>
                                         </Grid>

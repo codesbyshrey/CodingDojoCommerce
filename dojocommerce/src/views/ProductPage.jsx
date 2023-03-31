@@ -37,19 +37,19 @@ const ProductPage = () => {
             </div>
             <h3 className='extraPadding'> Related Items: </h3>
             {
-                oneProduct && oneProduct.category === "shirt" &&
+                oneProduct && (oneProduct.category === "shirt" || oneProduct.category === "shirts") &&
                 <div>
                     <DisplayShirt />
                 </div>
             }
             {
-                oneProduct && oneProduct.category === "short" &&
+                oneProduct && (oneProduct.category === "short" || oneProduct.category === "shorts") &&
                 <div>
                     <DisplayShort />
                 </div>
             }
             {
-                oneProduct && oneProduct.category === "pants" &&
+                oneProduct && (oneProduct.category === "pants" || oneProduct.category === "pant") &&
                 <div>
                     <DisplayPants />
                 </div>

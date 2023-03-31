@@ -14,7 +14,7 @@ const HomePage = () => {
     const addToCart = (product) => {
         setCart([...cart, product])
         console.log(cart)
-        window.scrollTo(0,0)
+        window.scrollTo(0,30)
     }
 
     const navigate = useNavigate();
