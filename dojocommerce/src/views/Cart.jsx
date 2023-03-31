@@ -47,8 +47,7 @@ const Cart = () => {
         <div className="cartContainer">
             <EmptyCart/>
 
-            <h1> Refresh Cart <button type="button" onClick={updateCart}> Update </button>  </h1>
-            <h3> Your Cart </h3>
+            <h1> Refresh Cart <button className="btn" type="button" onClick={updateCart}> Update </button>  </h1>
             <div className="cartProducts">
                 <h4> Your Items </h4>
                 <div className='featuredItem'>
@@ -60,10 +59,10 @@ const Cart = () => {
             </div>
             <div className="orderSummary"> 
                 <h4> Summary (x items) </h4>
-                <button type="button" onClick={removeItem}> Remove This Item </button>
+                <button className="btn btn-danger" type="button" onClick={removeItem}> Remove This Item </button>
             </div>
-            <button type="submit"> <Link to="/test/checkout"> Checkout </Link> </button>
-            <button type="submit" onClick={checkoutHandler}> checkout(register) </button>
+            <button href="/test/checkout" className="btn btn-primary" type="submit"> <Link to="/test/checkout"> Checkout </Link> </button>
+            <button className="btn btn-secondary" type="submit" onClick={checkoutHandler}> Checkout(Register) </button>
         </div>
     )
 }

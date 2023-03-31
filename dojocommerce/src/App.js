@@ -11,15 +11,16 @@ import Cart from './views/Cart'
 import DisplayPants from './views/DisplayPants';
 import DisplayShirt from './views/DisplayShirt';
 import DisplayShort from './views/DisplayShort';
+import {Navbar, Nav} from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
 
 function App() {
   return (
     <div>
-      <div className="wireframe">
+      <header className="wireframe">
+
         <div>
           <Link to="/"> <h1> Welcome to Dojo Commerce </h1> </Link>
-          <hr />
-          <br />
         </div>
         <h3 className="wireframelink">
           <Link to="/test/shirt"> Shirts </Link>|
@@ -27,14 +28,30 @@ function App() {
           <Link to="/test/short">Shorts </Link>|
           <Link to='/test/cart'> Cart </Link>
         </h3>
-      </div>
+      </header>
 
       <div className="testpages">
-        <Link to="test/checkout"> Checkout Page Test </Link> ||
-        <Link to="/test/login"> Login Page Test </Link> ||
-        <Link to="/test/register"> Register Page Check</Link>
-
+      <Navbar bg="light" expand="lg">
+          <LinkContainer to="/">
+            <Navbar.Brand> DojoCommerce </Navbar.Brand>
+          </LinkContainer>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav" />
+          <Nav className="mr-auto">
+            <LinkContainer to="/test/checkout">
+              <Nav.Link> Checkout Test </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/test/login">
+              <Nav.Link> Login Test </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/test/register">
+              <Nav.Link> Register Test </Nav.Link>
+            </LinkContainer>
+          </Nav>
+        </Navbar>
       </div>
+      <br/>
+      <hr/>
 
       <Routes>
         <Route path="/" element={<HomePage />} />

@@ -53,9 +53,35 @@ code {
 .featuredItem {
   display: flex;
   flex-direction: row;
+  border: 1px dotted black;
 }
 .cart {
   border: 3px solid lightgreen;
   background-color: lightblue;
   width: 300px;
+  align-items: right;
+  margin-left: 10px;
+}
+
+footer a {
+  text-align: center;
+  justify-content: space-evenly;
+  text-decoration: none;
+  font-style: bold;
+
+}
+
+.wireframe Link {
+  text-align: center;
+  font-style: bold;
+  text-decoration: none;
+}
+
+.registrationform {
+  display: flex;
+  flex: wrap;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  justify-content: center;
 }

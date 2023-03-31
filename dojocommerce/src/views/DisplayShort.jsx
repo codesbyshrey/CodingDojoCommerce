@@ -10,9 +10,10 @@ const DisplayShort = () => {
         axios.get(`http://localhost:8000/api/product`)
             .then(response => {
                 const allProduct = response.data
-                const categoryProducts = allProduct.filter(item => item.category === "short")
+                const categoryProducts = allProduct.filter(item => item.category === "short" || item.category === "shorts")
                 console.log(categoryProducts)
                 setOneCategory(categoryProducts)
+                window.scrollTo(0,0)
             })
             .catch(err => {
                 console.log(err)

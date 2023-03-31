@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActions } from '@mui/material'
 import CartPage from './CartPage'
+import { useNavigate } from 'react-router-dom'
 
 
 const HomePage = () => {
@@ -13,8 +14,12 @@ const HomePage = () => {
     const addToCart = (product) => {
         setCart([...cart, product])
         console.log(cart)
+        window.scrollTo(0,0)
+    }
 
-
+    const navigate = useNavigate();
+    const checkoutHandler = () => {
+        navigate('/test/register') //navigate back to home page for now
     }
 
     useEffect(() => {
@@ -40,10 +45,10 @@ const HomePage = () => {
                     <li>{randomProduct.description}</li>
                     <li>${randomProduct.price}</li>
                     <li>{randomProduct.category}</li>
-                    <Link to='/test/cart'> Add Product to Cart </Link>
+                    <button onClick={() => addToCart(randomProduct)}>Add Product to Cart</button>
                 </ul>
                 <div className='cart'>
-                    <h3>Cart content:</h3>
+                    <h3>Cart Content:</h3>
                     {
                         cart.map((eachProduct, idx) => (
                             <div key={idx}>
@@ -51,11 +56,16 @@ const HomePage = () => {
                                     {eachProduct.name}: ${eachProduct.price}
                                 </ol>
                             </div>
+                            
                         ))
                     }
-                    <h4>Total amount: {cart.price}</h4>
+                    <h4>Total Amount: {cart.price}</h4>
+                    <button className="btn btn-secondary" type="submit" onClick={checkoutHandler}> Checkout(Register) </button>
                 </div>
             </div>
+            <br/>
+            <hr/>
+            <br/>
             <div>
                 <h2 className='featuredMessage'> Products Available: </h2>
             </div>
@@ -84,7 +94,7 @@ const HomePage = () => {
                                                 ${eachProduct.price}
                                             </CardContent>
                                             <CardActions>
-                                                <Link to={`/test/cart`}>Go to cart</Link>
+                                                {/* <Link to={`/test/cart`}>Go to Cart</Link> */}
                                                 <button onClick={() => addToCart(eachProduct)}>Add Product to Cart</button>
                                             </CardActions>
                                         </Card>
@@ -94,6 +104,9 @@ const HomePage = () => {
                         ))
                     }
                 </Grid>
+                <hr/>
+                <br/>
+                <hr/>
                 <CartPage cart={cart} />
             </div>
         </ Container >

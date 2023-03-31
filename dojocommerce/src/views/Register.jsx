@@ -28,7 +28,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="registrationform">
       <h1>Registration</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -51,7 +51,7 @@ const Register = () => {
           <label htmlFor="confirmPassword">Confirm Password:</label>
           <input type="password" id="confirmPassword" onChange={(e) => setConfirmPassword(e.target.value)} />
         </div>
-        <button type="submit">Register</button>
+        <button className="btn btn-primary" type="submit">Register</button>
       </form>
     </div>
   );
