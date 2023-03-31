@@ -30,3 +30,5 @@ Coding Dojo MERN Stack Project Week (Full Time Program)
 
 ## Using the Website
 1. Homepage will include a random product featured. Product will change upon refresh.
+
+# Last Commit Presentation Check
