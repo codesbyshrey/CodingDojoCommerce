@@ -19,7 +19,8 @@ const HomePage = () => {
 
     const navigate = useNavigate();
     const checkoutHandler = () => {
-        navigate('/test/register') //navigate back to home page for now
+        navigate('/test/login') //navigate back to home page for now
+        // if conditional to test if user is in session / logged in to push to login page
     }
 
     useEffect(() => {
@@ -60,7 +61,7 @@ const HomePage = () => {
                         ))
                     }
                     <h4>Total Amount: {cart.price}</h4>
-                    <button className="btn btn-secondary" type="submit" onClick={checkoutHandler}> Checkout(Register) </button>
+                    <button className="btn btn-secondary" type="submit" onClick={checkoutHandler}> Checkout </button>
                 </div>
             </div>
             <br/>
