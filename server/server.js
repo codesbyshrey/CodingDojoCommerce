@@ -23,3 +23,5 @@ app.get('/api/users', jwtConfig.authenticate, (req, res) => {
 require('./routes/project.routes')(app)
 
 app.listen(port, () => console.log(`LISTENING AT PORT: ${port}`))
+
+// EC2 Launch Switch Post Bootcamp
