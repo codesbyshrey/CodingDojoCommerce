@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+// user accounts used for login/registration
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -25,11 +26,13 @@ const userSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
+// "virtual" field only used during validation – not stored in MongoDB
 userSchema.virtual('confirmPassword')
     .get(() => this._confirmPassword)
     .set(value => this._confirmPassword = value);
 
 
+// make sure password and confirmPassword match before saving
 userSchema.pre('validate', function (next) {
     console.log(this.get('confirmPassword'))
     if (this.password !== this.get('confirmPassword')) {
@@ -39,6 +42,7 @@ userSchema.pre('validate', function (next) {
 });
 
 
+// hash plain‑text password before saving user document
 userSchema.pre('save', function (next) {
     bcrypt.hash(this.password, 10)
         .then(hash => {
@@ -48,6 +52,7 @@ userSchema.pre('save', function (next) {
 });
 
 
+// individual item available in the store
 const productSchema = new mongoose.Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
@@ -56,6 +61,7 @@ const productSchema = new mongoose.Schema({
     category: { type: String, required: true },
 });
 
+// collection of products purchased by a user
 const orderSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true }],

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
+// simple read‑only view of the items passed in via the cart prop
 const CartPage = ({ cart }) => {
 
     return (

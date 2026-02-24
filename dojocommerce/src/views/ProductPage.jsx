@@ -8,10 +8,13 @@ import DisplayShort from './DisplayShort'
 
 
 const ProductPage = () => {
+    // holds the product being viewed
     const [oneProduct, setOneProduct] = useState([])
 
+    // read id from the URL (/test/product/:id)
     const { id } = useParams()
 
+    // when id changes, load that specific product from the API
     useEffect(() => {
         axios.get(`http://localhost:8000/api/product/${id}`)
             .then(response => {
@@ -33,6 +36,7 @@ const ProductPage = () => {
                     <li>{oneProduct.description}</li>
                     <li>${oneProduct.price}</li>
                     <li>{oneProduct.category}</li>
+                    {/* navigates to the cart page – cart data itself is handled elsewhere */}
                     <Link to='/test/cart'>Add to Cart </Link>
                 </ul>
             </div>

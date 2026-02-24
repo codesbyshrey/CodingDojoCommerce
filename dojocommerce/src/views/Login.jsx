@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+// login form that calls the /api/login endpoint and then redirects home
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

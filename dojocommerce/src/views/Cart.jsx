@@ -1,8 +1,9 @@
-// Cart Page
+// Cart Page – shows orders fetched from the backend plus some simple actions
 import axios from "axios"
 import React, { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 
+// presentational component for the empty‑cart state
 const EmptyCart = () => {
     return (
         <div> 
@@ -13,11 +14,13 @@ const EmptyCart = () => {
 }
 
 const Cart = () => {
+    // holds list of orders returned from /api/order
     const [cartProducts, setCartProducts] = useState([])
 
     const navigate = useNavigate();
     const { id } = useParams()
 
+    // on mount (and when id changes), load all orders from the API
     useEffect(() => {
         axios.get(`http://localhost:8000/api/order`)
             .then(response => {

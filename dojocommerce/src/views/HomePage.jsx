@@ -7,22 +7,28 @@ import { useNavigate } from 'react-router-dom'
 
 
 const HomePage = () => {
+    // full list of products loaded from the API
     const [displayProduct, setDisplayProduct] = useState([])
+    // single randomly chosen product highlighted at the top
     const [randomProduct, setRandomProduct] = useState([])
+    // simple in‑memory cart for the current session in this component
     const [cart, setCart] = useState([])
 
     const addToCart = (product) => {
         setCart([...cart, product])
         console.log(cart)
+        // bring user focus back to the top of the page when cart changes
         window.scrollTo(0, 30)
     }
 
     const navigate = useNavigate();
     const checkoutHandler = () => {
-        navigate('/test/login') //navigate back to home page for now
-        // if conditional to test if user is in session / logged in to push to login page
+        // for now, "checkout" just pushes the user into the login flow
+        navigate('/test/login')
+        // future improvement: decide where to send based on auth state
     }
 
+    // on mount, load product list from backend and choose a random featured item
     useEffect(() => {
         axios.get('http://localhost:8000/api/product')
             .then(response => {
@@ -60,6 +66,7 @@ const HomePage = () => {
 
                         ))
                     }
+                    {/* total is currently not computed – could be derived from cart.reduce(...) */}
                     <h4>Total Amount: {cart.price}</h4>
                     <button className="btn btn-secondary" type="submit" onClick={checkoutHandler}> Checkout </button>
                 </div>
@@ -95,7 +102,7 @@ const HomePage = () => {
                                                 ${eachProduct.price}
                                             </CardContent>
                                             <CardActions>
-                                                {/* <Link to={`/test/cart`}>Go to Cart</Link> */}
+                                                {/* clicking here adds the item to the local cart but keeps you on the same page */}
                                                 <button onClick={() => addToCart(eachProduct)}>Add Product to Cart</button>
                                             </CardActions>
                                         </Card>
@@ -108,6 +115,7 @@ const HomePage = () => {
                 <hr />
                 <br />
                 <hr />
+                {/* separate cart summary view that reuses the same cart state */}
                 <CartPage cart={cart} />
             </div>
         </ Container >

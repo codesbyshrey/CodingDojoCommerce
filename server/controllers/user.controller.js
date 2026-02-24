@@ -2,24 +2,29 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models/project.model');
 
+// controller object groups all user‑related handlers
 const UserController = {};
 
+// simple health‑check endpoint for the user controller
 UserController.apiTestUser = (req, res) => {
     res.json({ message: 'User controller is working' });
 };
 
+// return all users (used by protected /api/users route)
 UserController.allUser = (req, res) => {
     User.find()
         .then(userList => res.json(userList))
         .catch(err => res.status(400).json(err));
 };
 
+// look up a single user by MongoDB _id
 UserController.oneUser = (req, res) => {
     User.findOne({ _id: req.params.id })
         .then(oneUser => res.json(oneUser))
         .catch(err => res.status(400).json(err));
 };
 
+// create a user document directly from posted body
 UserController.createUser = (req, res) => {
     const newUser = req.body;
     User.create(newUser)
@@ -27,6 +32,7 @@ UserController.createUser = (req, res) => {
         .catch(err => res.status(400).json(err));
 };
 
+// update an existing user by id
 UserController.updateUser = (req, res) => {
     User.findOneAndUpdate(
         { _id: req.params.id },
@@ -37,12 +43,14 @@ UserController.updateUser = (req, res) => {
         .catch(err => res.status(400).json(err));
 };
 
+// delete a user document permanently
 UserController.deleteUser = (req, res) => {
     User.deleteOne({ _id: req.params.id })
         .then(message => res.json(message))
         .catch(err => res.status(400).json(err));
 };
 
+// verify credentials and issue a JWT in an HTTP‑only cookie
 UserController.login = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
@@ -64,6 +72,7 @@ UserController.login = async (req, res) => {
     }
 };
 
+// basic registration flow with backend validation
 UserController.register = async (req, res) => {
     try {
         const { firstName, lastName, email, password, confirmPassword } = req.body;
@@ -98,6 +107,7 @@ UserController.register = async (req, res) => {
     }
 };
 
+// clear the auth cookie – client will be treated as logged out
 UserController.logout = (req, res) => {
     res.clearCookie('usertoken');
     res.sendStatus(200);

@@ -1,5 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// page‑level views
 import CartPage from './views/CartPage';
 import Login from './views/Login'
 import Register from './views/Register'
@@ -11,12 +12,15 @@ import Cart from './views/Cart'
 import DisplayPants from './views/DisplayPants';
 import DisplayShirt from './views/DisplayShirt';
 import DisplayShort from './views/DisplayShort';
+// navigation components from react‑bootstrap
 import {Navbar, Nav} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 
+// top‑level layout and route configuration
 function App() {
   return (
     <div>
+      {/* main site header with quick category links */}
       <header className="wireframe">
 
         <div>
@@ -30,6 +34,7 @@ function App() {
         </h3>
       </header>
 
+      {/* testing navigation bar for quickly jumping to key flows */}
       <div className="testpages">
       <Navbar bg="light" expand="lg">
           <LinkContainer to="/">
@@ -53,6 +58,7 @@ function App() {
       <br/>
       <hr/>
 
+      {/* client‑side routing for all main views */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/test/cart" element={<Cart />} />

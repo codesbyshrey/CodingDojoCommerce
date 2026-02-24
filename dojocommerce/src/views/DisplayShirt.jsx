@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActions } from '@mui/material'
 import { Link } from 'react-router-dom'
 
+// shows only products in the "shirt(s)" category
 const DisplayShirt = () => {
     const [oneCategory, setOneCategory] = useState([])
 

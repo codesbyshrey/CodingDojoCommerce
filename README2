@@ -1,0 +1,164 @@
+# CodingDojoCommerce
+> Full‑stack MERN e‑commerce demo built for Coding Dojo MERN Project Week (Full‑Time Program).
+> Live demo: _not currently hosted_ (intended for local development / presentation during project week).
+
+## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Screenshots](#screenshots)
+* [Setup](#setup)
+* [Usage](#usage)
+* [Project Status](#project-status)
+* [Room for Improvement](#room-for-improvement)
+* [Acknowledgements](#acknowledgements)
+* [Contact](#contact)
+<!-- * [License](#license) -->
+
+
+## General Information
+- CodingDojoCommerce is a learning‑focused e‑commerce site that demonstrates a complete MERN stack flow: authentication, product catalog, cart, and basic order handling.
+- It is designed as a capstone‑style project for **Coding Dojo MERN Stack Project Week**, showcasing how the pieces of the stack fit together.
+- The project’s main goals are:
+  - Practice implementing **JWT‑based authentication** with HTTP‑only cookies.
+  - Model a small but realistic e‑commerce domain in **MongoDB** (users, products, orders).
+  - Build a **React** UI that consumes a REST API and presents products in a modern layout.
+- The app is currently intended to run locally for classroom demos and code reviews rather than as a production store.
+
+
+## Technologies Used
+- React (Create React App)
+- React Router
+- Axios
+- React‑Bootstrap / Bootstrap
+- Material UI (MUI) – cards and layout
+- Node.js
+- Express
+- MongoDB Atlas
+- Mongoose
+- JSON Web Token (JWT)
+- cookie‑parser
+- dotenv
+
+
+## Features
+List of implemented features:
+- User **registration** and **login** backed by MongoDB, with passwords hashed using bcrypt.
+- **JWT auth** with HTTP‑only cookies and a reusable `authenticate` middleware to protect routes.
+- **Product catalog** with categories (shirts, pants, shorts) and a dedicated product detail page.
+- **Random featured product** on the homepage that changes on refresh.
+- Simple **cart experience** on the frontend (in‑memory) with a separate cart summary view.
+- **Order listing** view that reads data from the `Order` collection.
+- Category pages for shirts, pants, and shorts using Material UI cards and React Router.
+
+
+## Screenshots
+![Example screenshot](./img/screenshot.png)
+<!-- Replace the placeholder above with real screenshots (e.g. homepage, product detail, cart, auth pages) when available. -->
+
+
+## Setup
+The project is split into a **backend** (`server/`) and **frontend** (`dojocommerce/`).
+
+**Requirements / dependencies:**
+- Node.js and npm installed locally.
+- MongoDB Atlas account and connection credentials.
+- Environment variables in a `.env` file in `server/`.
+
+**Backend (`server/`):**
+1. Open a terminal in the `server` folder.
+2. Install dependencies:
+   - `npm install`
+3. Create a `.env` file in `server/` with entries similar to:
+   - `PORT=8000`
+   - `DB=<your_database_name>`
+   - `ATLAS_USERNAME=<your_mongodb_atlas_username>`
+   - `ATLAS_PASSWORD=<your_mongodb_atlas_password>`
+   - `JWT_SECRET=<some_long_random_string>`
+4. Start the API:
+   - `nodemon server.js` (or `node server.js`).
+
+**Frontend (`dojocommerce/`):**
+1. Open another terminal in the `dojocommerce` folder.
+2. Install dependencies:
+   - `npm install`
+3. Start the React app:
+   - `npm start`
+4. Visit `http://localhost:3000` in your browser.
+
+The React app talks to the API at `http://localhost:8000`, and CORS is configured in `server/server.js` to allow this.
+
+
+## Usage
+High‑level ways to use and explore the app:
+
+- **Browse products**
+  - Go to the home page (`/`) to see the random featured product and the full product grid.
+  - Use the header links or category routes (`/test/shirt`, `/test/pants`, `/test/short`) to view filtered lists.
+
+- **View a product**
+  - Click a product from any list to open `/test/product/:id`.
+  - See details (image, description, price, category) and “related items” from the same category.
+
+- **Cart**
+  - From the home page, click “Add Product to Cart” on a product to add it to the in‑memory cart.
+  - Scroll down to see `CartPage` showing the items you’ve added.
+  - Visit `/test/cart` for the orders‑oriented cart view that reads from the backend.
+
+- **Authentication**
+  - Register: `/test/register` → fills in and submits to `POST /api/register`.
+  - Login: `/test/login` → submits to `POST /api/login` and, on success, redirects home.
+  - After login, protected endpoints like `GET /api/users` can be accessed (via tools like Postman or the browser if wired to a view).
+
+Example sequence:
+
+```bash
+# from server/
+nodemon server.js
+
+# from dojocommerce/
+npm start
+```
+
+
+## Project Status
+Project is: _complete for project‑week presentation_, with room for further development.
+
+It already demonstrates the core MERN concepts targeted for the assignment (auth, models, routes, React views) but is not hardened for production use.
+
+
+## Room for Improvement
+Include areas you believe need improvement / could be improved. Also add TODOs for future development.
+
+Room for improvement:
+- More robust cart implementation synchronized with the backend (and tied directly to the logged‑in user).
+- Improved error handling and user feedback in the React forms (validation messages, loading states).
+- Cleaner separation of concerns on the frontend (e.g., dedicated hooks/services for API calls).
+
+To do:
+- Add an admin interface for managing products and orders.
+- Wire full checkout flow to create `Order` documents from the in‑memory cart.
+- Add tests (backend and frontend) and improve production build/deployment setup.
+
+
+## Acknowledgements
+- Built as part of the **Coding Dojo MERN Stack** curriculum.
+- Trello planning board: `https://trello.com/w/codingdojo66`.
+- Teammates:
+  - [Kimly Quac](https://github.com/kquac00)
+  - [Em Bang Long Nguyen](https://github.com/longnguyen2912)
+  - Shreyas Sriram
+
+
+## Contact
+Created by the CodingDojoCommerce team – feel free to reach out:
+- Shreyas Sriram
+- [Kimly Quac](https://github.com/kquac00)
+- [Em Bang Long Nguyen](https://github.com/longnguyen2912)
+
+<!-- Optional -->
+<!-- ## License -->
+<!-- This project is open source for learning purposes; no formal license has been applied yet. -->
+
+<!-- You don't have to include all sections - just the one's relevant to your project -->
+
